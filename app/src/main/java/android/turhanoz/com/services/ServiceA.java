@@ -21,12 +21,13 @@ public class ServiceA extends Service {
         Toast.makeText(this, "The newA Service was Created", Toast.LENGTH_LONG).show();
 
     }
+
     @Override
-    public void onStart(Intent intent, int startId) {
-        // For time consuming an long tasks you can launch a new thread here...
-        Toast.makeText(this, " ServiceA Started", Toast.LENGTH_LONG).show();
-    startService(new Intent(ServiceA.this,ServiceB.class));
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        startService(new Intent(ServiceA.this,ServiceB.class));
+        return Service.START_NOT_STICKY;
     }
+
     @Override
     public void onDestroy() {
 

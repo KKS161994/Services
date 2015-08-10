@@ -22,11 +22,13 @@ public class ServiceB extends Service {
 
     }
     @Override
-    public void onStart(Intent intent, int startId) {
-        // For time consuming an long tasks you can launch a new thread here...
-   b=3;
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        b=3;
         Toast.makeText(this, " ServiceB Started", Toast.LENGTH_LONG).show();
+
+        return Service.START_STICKY;
     }
+
     @Override
     public void onDestroy() {
 
